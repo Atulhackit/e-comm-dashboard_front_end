@@ -1,0 +1,24 @@
+$primary-color:#006666;
+$secondary-color:#1a1a00;
+$font-color:#fff;
+
+.headerWrapper{
+    height: 60px;
+    width: 100%;
+    background-color: $primary-color;
+    .navItems{
+        display: flex;
+        justify-content: flex-end;
+        li{
+            list-style: none;
+            padding: 1em;
+            cursor: pointer;
+            color: white;
+
+            .item{
+                color: $font-color;
+                text-decoration: none;
+            }
+        }
+    }
+}
