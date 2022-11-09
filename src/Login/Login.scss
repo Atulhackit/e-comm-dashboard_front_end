@@ -1,0 +1,60 @@
+$primary-color:#b3b300;
+$font-color:#fff;
+$secondary-color:#00ff55;
+$background-color:#ccffff;
+
+.loginContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: $background-color;
+
+    .mainContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        // height: calc(100% - 300px);
+        width: 350px;
+        gap: 2em;
+        border-radius: .8em;
+        background-color: $primary-color;
+        color: $font-color;
+        padding: 2em;
+
+
+        .loginHead {
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+
+        .loginForm {
+            display: flex;
+            flex-direction: column;
+            gap: 2em;
+            width: 100%;
+
+            input {
+                // width: 100%;
+                padding: .8em;
+                border-radius: .5em;
+                border: none;
+                width: 100%;
+                &:focus{
+                    outline: none;
+                }
+            }
+            .loginBtn{
+                border-radius: .8em;
+                padding: .8em;
+                width: 100%;
+                background-color: $secondary-color;
+                border: none;
+            }
+        }
+
+    }
+}
