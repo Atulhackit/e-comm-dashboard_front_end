@@ -1,0 +1,13 @@
+$primary-color: #a9dddd;
+.footerContainer{
+    // height: 100px;
+    width: 100%;
+    background-color: $primary-color ;
+    padding: 1em;
+    text-align: center;
+    p{
+        font-size: 1em;
+        font-weight: 500;
+        // color: #fff;
+    }
+}
