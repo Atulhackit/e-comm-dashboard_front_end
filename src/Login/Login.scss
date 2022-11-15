@@ -1,9 +1,10 @@
-$primary-color:#b3b300;
+$primary-color:#7a7a71;
 $font-color:#fff;
 $secondary-color:#00ff55;
 $background-color:#ccffff;
 
-.loginContainer {
+ 
+.loginContainer,.addProductContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,18 +12,18 @@ $background-color:#ccffff;
     width: 100%;
     background-color: $background-color;
 
-    .mainContainer {
+    .mainContainer{
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         // height: calc(100% - 300px);
         width: 350px;
-        gap: 2em;
+        gap: 1em;
         border-radius: .8em;
         background-color: $primary-color;
         color: $font-color;
-        padding: 2em;
+        padding:1em 2em;
 
 
         .loginHead {
@@ -31,11 +32,18 @@ $background-color:#ccffff;
             font-weight: 600;
         }
 
-        .loginForm {
+        .loginForm ,.addProductFrom{
             display: flex;
             flex-direction: column;
-            gap: 2em;
+            gap: 1em;
             width: 100%;
+            span{
+                color: red;
+                font-size: .8em;
+                font-weight: 600;
+                margin: 0;
+                padding: 0;
+            }
 
             input {
                 // width: 100%;
@@ -43,6 +51,7 @@ $background-color:#ccffff;
                 border-radius: .5em;
                 border: none;
                 width: 100%;
+                border: 1px solid $secondary-color;
                 &:focus{
                     outline: none;
                 }
@@ -54,7 +63,12 @@ $background-color:#ccffff;
                 background-color: $secondary-color;
                 border: none;
                 cursor: pointer;
+                color: $font-color;
             }
+        }
+        .signupBottom{
+            cursor: pointer;
+            text-align: center;
         }
 
     }
