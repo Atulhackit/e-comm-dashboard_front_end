@@ -1,3 +1,48 @@
+
+$secondary-color:#00ff55;
+$primary-color:#7a7a71;
+
 .dashboardContainer{
-    
+
+    .mainContainer {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        height: 79.5vh;
+        margin-top: 2em;
+        gap: 1.5em;
+        .heading{
+            color: grey;
+            p{
+                font-size: 1.4  em;
+                font-weight: 700;
+
+            }
+        }
+        .ProductTable{
+            width: 70%;
+            table-layout: fixed;
+            // display: flex;
+            // flex-direction: column;
+
+            .tableHead ,.tableBody{
+                list-style: none;
+                display: flex;
+
+                .item{
+                    border: 1px solid $primary-color;
+                    color: grey;
+                    flex: 4;
+                    font-size: 1em;
+                    padding:.5em 1em;
+
+                    &:first-child{
+                        flex: 1;
+                    }
+                    
+                }
+
+            }
+        }
+    }
 }

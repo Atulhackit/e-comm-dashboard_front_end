@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react'
 import Header from "../common/header/Header"
 import Footer from "../common/footer/Footer"
 import "./Login.scss"
-import { useNavigate } from 'react-router-dom'
+import { useNavigate ,Link, json} from 'react-router-dom'
 
 const LogIn = () => {
 
@@ -11,23 +11,24 @@ const LogIn = () => {
   const [password, setPassword] = useState("")
   const navigate =useNavigate()
   const collectFormData=async()=>{
-    // let result = await fetch("http://localhost:5000/register",{
-    //   method:"post",
-    //   body:JSON.stringify({name,email,password}),
-    //   headers:{
-    //     "Content-Type" : "application/json"
-    //   },
-    // })
-    // result = await result.json()
-    // console.log("result", result)
+    let result = await fetch("http://localhost:5000/login",{
+      method:"post",
+      body:JSON.stringify({email,password}),
+      headers:{
+        "Content-Type" : "application/json"
+      },
+    })
+    result = await result.json()
+    
 
-    // if(result){
-    //   navigate("/") 
-    // }
+    if(result.name){
+      localStorage.setItem("user", JSON.stringify(result))
+      console.log(result)
+      navigate("/") 
+    }else{
+      alert("enter correct Details")
+    }
 
-    setEmail("")
-    setName("")
-    setPassword("")
   }
   return (
     <div className='loginContainer'>
@@ -41,6 +42,10 @@ const LogIn = () => {
             <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Enter Password"/>
             <button onClick={collectFormData} className='loginBtn'>LogIn</button>
         </section>
+        <div className='signupBottom'>
+          <p>or</p>
+          <Link to="/signUp">Sign Up</Link>
+        </div>
       </div>
     </div>
   )
