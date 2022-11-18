@@ -1,0 +1,35 @@
+.aboutMainWrapper{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+.tabsContainer{
+    width: 50%;
+    height: 90%;
+    background-color: aqua;
+    margin: 1em;
+
+
+    .TabsWrapper{
+        display: flex;
+        padding: 1em;
+        height: 50px;
+        background-color: gray;
+        // align-items: center;
+        // justify-content: center;
+        gap: 2em;
+        .item{
+            list-style: none;
+            font-size: 1em;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+        }
+        .active{
+            color: blue;
+        }
+    }
+}
+}
