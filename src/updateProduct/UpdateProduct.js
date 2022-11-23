@@ -10,26 +10,40 @@ const UpdateProduct = () => {
   const [brand , setBrand] = useState("")
   const navigate= useNavigate()
   const [error, setError] = useState(false)
-
+  let userId = JSON.parse(localStorage.getItem("user"))?._id
   const productId = useParams()?.id
-  
 
   useEffect(()=>{
-    updateFormData()
+    getProductDetails()
   },[])
 
-
-  const updateFormData = async()=>{
+  const getProductDetails = async()=>{
     let result = await fetch(`http://localhost:5000/product/${productId}`)
     result = await result.json()
-    
+    // console.log(result)
+
     setBrand(result?.brand)
     setCategory(result?.category)
     setName(result?.name)
     setPrice(result?.price)
-
   }
-  
+
+  const updateFormData =async (e)=>{
+    e.preventDefault()
+    let result = await fetch(`http://localhost:5000/product/${productId}`,{
+      method:"Put",
+      body:JSON.stringify({name,price,category,brand }),
+      headers:{
+        "Content-Type": "application/json"
+      }
+    })
+    result = await result.json()
+    // console.log(result?.modifiedCount)
+    if(result){
+      navigate("/")
+    }
+    
+  }
   return (
     <Fragment>
       <Header/>
@@ -55,7 +69,7 @@ const UpdateProduct = () => {
           <input type="text" value={brand} onChange={(e) => setBrand(e.target.value)} placeholder="Enter Prduct brand"/>
           {error && !brand && <span>Enter Product Brand *</span>}
           </div>
-          <button onClick={updateFormData} className='loginBtn'>Update Product</button>
+          <button onClick={(e)=>updateFormData(e)} className='loginBtn'>Update Product</button>
 
         </form>
       </div>

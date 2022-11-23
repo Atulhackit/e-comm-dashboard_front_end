@@ -15,7 +15,7 @@ const Header = () => {
        <ul className='navItems'> 
             <li><Link className='item' to="/">Dashboard</Link></li>
             <li><Link className='item' to="/addPorduct">Add Product</Link></li>
-            <li><Link className='item' to="/updateProduct/:id">Update Product</Link></li>
+            {/* <li><Link className='item' to="/updateProduct/:id">Update Product</Link></li> */}
             <li><Link className='item' to="/about">About</Link></li>
             {
             auth 
