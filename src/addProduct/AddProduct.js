@@ -3,16 +3,17 @@ import Header from "../common/header/Header";
 import Footer from "../common/footer/Footer";
 import { useNavigate } from "react-router-dom";
 
-// const InputField =({name,placeholder})=>{
-//   const [value , setValue] = useState('')
-//   return (
-//     <input
-//     name={name}
-//     value={value}
-//     placeholder={placeholder}
-//     onClick={(e)=>setValue(e.target.value)} />
-//   )
-// }
+const InputField = ({ name, placeholder }) => {
+  const [value, setValue] = useState("");
+  return (
+    <input
+      name={name}
+      value={value}
+      placeholder={placeholder}
+      onChange={(e) => setValue(e.target.value)}
+    />
+  );
+};
 const AddProduct = () => {
   const [data, setData] = useState({
     name: "",
@@ -20,7 +21,7 @@ const AddProduct = () => {
     brand: "",
     category: "",
   });
-console.log(data)
+  console.log(data);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
@@ -57,6 +58,11 @@ console.log(data)
     setName("");
     setPrice("");
   };
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    const formData= new FormData(e.currentTarget)
+    console.log(formData)
+  }
   return (
     <div>
       <Header />
@@ -68,9 +74,9 @@ console.log(data)
           <header className="loginHead">
             <p> Add Product</p>
           </header>
-          <form className="addProductFrom" autoComplete="off">
+          <form className="addProductFrom" autoComplete="off" onSubmit={handleSubmit}>
             <div>
-              <input
+              {/* <input
                 type="text"
                 value={data?.name}
                 onChange={(e) => {
@@ -80,14 +86,12 @@ console.log(data)
                   });
                 }}
                 placeholder="Enter Product Name"
-              />
-              {/* <InputField 
-            name="name"
-            placeholder='Enter Product Name' /> */}
+              /> */}
+              <InputField name="name" placeholder="Enter Product Name" />
               {error && !name && <span>Enter Product Name *</span>}
             </div>
             <div>
-              <input
+              {/* <input
                 type="text"
                 value={data?.price}
                 onChange={(e) =>
@@ -97,7 +101,8 @@ console.log(data)
                   })
                 }
                 placeholder="Enter Product Price"
-              />
+              /> */}
+              <InputField name="price" placeholder="Enter Product price" />
               {error && !price && <span>Enter Product Price *</span>}
             </div>
             <div>

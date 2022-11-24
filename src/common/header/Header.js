@@ -17,6 +17,7 @@ const Header = () => {
             <li><Link className='item' to="/addPorduct">Add Product</Link></li>
             <li><Link className='item' to="/updateProduct/:id">Update Product</Link></li>
             <li><Link className='item' to="/about">Tabs</Link></li>
+            <li><Link className='item' to="/form">Form</Link></li>
             {
             auth 
             ?<li> <Link  onClick={logOut} className='item' to="/">Log Out</Link> </li>

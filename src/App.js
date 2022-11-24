@@ -15,6 +15,7 @@ import About from "./about/About"
 import { Fragment } from 'react';
 import PrivateComponent from './PrivateComponent';
 import LogIn from './Login/Login';
+import DummyForm from "./form/Form"
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path='/updateProduct/:id' element={<UpdateProduct />} />
         <Route path='/about' element={<About />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/form' element={<DummyForm/>} />
         </Route>
 
         <Route path='/signUp' element={<SignUp />} />
