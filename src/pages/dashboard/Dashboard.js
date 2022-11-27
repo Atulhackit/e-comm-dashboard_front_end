@@ -11,6 +11,7 @@ const Dashboard = () => {
     let products = await fetch("http://localhost:5000")
     products = await products.json()
     setProductList(products)
+    console.log(products)
   }
 
   const deleteProduct = async (id) => {
@@ -61,11 +62,11 @@ const Dashboard = () => {
             <li className='item'>Price</li>
             <li className='item'>Operation</li>
           </ul>
-          {productList.length>1 ?
+          {productList.length>0 ?
              productList.map((row, i) => {
               return (
                 <ul className='tableBody' key={i}>
-                  <li className='item'>{i + 1}.</li>
+                  <li className='item'>{i}.</li>
                   <li className='item'>{row?.name}</li>
                   <li className='item'>{row?.category}</li>
                   <li className='item'>{row?.brand}</li>
