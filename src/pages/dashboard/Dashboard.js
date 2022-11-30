@@ -15,7 +15,7 @@ const Dashboard = () => {
   }
 
   const deleteProduct = async (id) => {
-    // console.log(id)
+    console.log(id)
     const result = await fetch(`http://localhost:5000/deleteProduct/${id}`,
       {
         method: "delete"
