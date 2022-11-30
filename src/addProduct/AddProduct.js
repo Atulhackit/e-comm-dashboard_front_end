@@ -45,7 +45,6 @@ const AddProduct = () => {
       console.log(error);
 
       return false; 
-      
     }
     let result = await fetch("http://localhost:5000/addProduct", {
       method: "post",
