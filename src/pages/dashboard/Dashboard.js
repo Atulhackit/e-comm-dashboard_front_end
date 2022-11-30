@@ -11,6 +11,7 @@ const Dashboard = () => {
     let products = await fetch("http://localhost:5000")
     products = await products.json()
     setProductList(products)
+    console.log(products)
   }
 
   const deleteProduct = async (id) => {
@@ -26,7 +27,21 @@ const Dashboard = () => {
       alert(' Product is deleted')
     }
   }
-console.log(productId)
+
+  const SearchHandle = async(e)=>{
+    const key = e.target.value
+    console.log(key)
+    if(key){
+      let result = await fetch(`http://localhost:5000/search/${key}`)
+      result = await result.json()
+      if(result){
+        setProductList(result)
+      }
+    }else{
+      ProductsApi()
+    }
+    
+  }
   useEffect(() => {
     ProductsApi()
   },[productId])
@@ -37,6 +52,7 @@ console.log(productId)
         <div className='heading'>
           <p > Product List </p>
         </div>
+        <input type="search" placeholder="Search Product"  className="SearchInput" onChange={(e)=>SearchHandle(e)}/>
         <div className=' ProductTable'>
           <ul className='tableHead'>
             <li className='item'>S. No</li>
@@ -46,11 +62,11 @@ console.log(productId)
             <li className='item'>Price</li>
             <li className='item'>Operation</li>
           </ul>
-          {
-            productList.map((row, i) => {
+          {productList.length>0 ?
+             productList.map((row, i) => {
               return (
                 <ul className='tableBody' key={i}>
-                  <li className='item'>{i + 1}.</li>
+                  <li className='item'>{i}.</li>
                   <li className='item'>{row?.name}</li>
                   <li className='item'>{row?.category}</li>
                   <li className='item'>{row?.brand}</li>
@@ -63,6 +79,7 @@ console.log(productId)
                 </ul>
               )
             })
+            :(<h3>No Product Found </h3>)
           }
         </div>
       </section>

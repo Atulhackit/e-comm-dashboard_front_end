@@ -9,13 +9,26 @@ $primary-color:#7a7a71;
         align-items: center;
         flex-direction: column;
         height: 79.5vh;
-        margin-top: 2em;
+        margin: 2em 0;
         gap: 1.5em;
+        .SearchInput{
+            padding: 1em;
+            font-size: .8em;
+            width: 40%;
+            font-weight: 500;
+            color: $primary-color;
+            border: 1px solid $secondary-color;
+            border-radius: 1em;
+
+            &:focus{
+                outline: none;
+                
+            }
+        }
         .heading{
             color: grey;
-            margin-top: 70px;
             p{
-                font-size: 1.4;
+                font-size: 1.4  em;
                 font-weight: 700;
 
             }

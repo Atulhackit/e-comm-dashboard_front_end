@@ -3,45 +3,52 @@ import Header from "../common/header/Header";
 import Footer from "../common/footer/Footer";
 import { useNavigate } from "react-router-dom";
 
-const InputField = ({ name, placeholder }) => {
-  const [value, setValue] = useState("");
+const Input=({name,placeholder,type})=>{
+  const [value,setValue]= useState('')
   return (
-    <input
-      name={name}
-      value={value}
-      placeholder={placeholder}
-      onChange={(e) => setValue(e.target.value)}
-    />
-  );
-};
+    <div>
+      <input
+          name={name} 
+          value={value}
+          placeholder={placeholder}
+          // pattern="[a-z][A-Z]"
+          onChange={(e)=>setValue(e.target.value)}
+          required
+      />
+      {  !value && <span> Please Enter {name}</span>}
+    </div>
+  )
+}
 const AddProduct = () => {
-  const [data, setData] = useState({
-    name: "",
-    price: "",
-    brand: "",
-    category: "",
-  });
-  console.log(data);
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [category, setCategory] = useState("");
-  const [brand, setBrand] = useState("");
+  // const [data, setData]=useState({
+  //   name:"",
+  //   brand:"",
+  //   price:"",
+  //   category:""
+  // })
+  // const [name, setName] = useState("");
+  // const [price, setPrice] = useState("");
+  // const [category, setCategory] = useState("");
+  // const [brand, setBrand] = useState("");
   const navigate = useNavigate();
   const [error, setError] = useState(false);
   let userId = JSON.parse(localStorage.getItem("user"))?._id;
 
   const collectFormData = async (e) => {
     e.preventDefault();
-    console.log(name, price, category, brand);
+    const formData= new FormData(e.currentTarget)
+    const formValues = Object.fromEntries(formData.entries())
+    console.log(formValues)
 
-    if (!name || !price || !category || !brand) {
+    if (!formValues?.name || !formValues?.price || !formValues?.category || !formValues?.brand) {
       setError(true);
       console.log(error);
+
       return false;
     }
     let result = await fetch("http://localhost:5000/addProduct", {
       method: "post",
-      body: JSON.stringify({ name, price, category, brand, userId }),
+      body: JSON.stringify(formValues),
       headers: {
         "Content-Type": "application/json",
       },
@@ -53,16 +60,8 @@ const AddProduct = () => {
       navigate("/");
     }
 
-    setBrand("");
-    setCategory("");
-    setName("");
-    setPrice("");
   };
-  const handleSubmit=(e)=>{
-    e.preventDefault()
-    const formData= new FormData(e.currentTarget)
-    console.log(formData)
-  }
+
   return (
     <div>
       <Header />
@@ -74,10 +73,13 @@ const AddProduct = () => {
           <header className="loginHead">
             <p> Add Product</p>
           </header>
-          <form className="addProductFrom" autoComplete="off" onSubmit={handleSubmit}>
+          <form className="addProductFrom" autoComplete="off" onSubmit={collectFormData}>
             <div>
+              <Input name="name" type="text" placeholder="Enter Product Name" />
               {/* <input
                 type="text"
+                pattern="[a-z][A-Z][0-9]"
+                required
                 value={data?.name}
                 onChange={(e) => {
                   setData({
@@ -86,13 +88,15 @@ const AddProduct = () => {
                   });
                 }}
                 placeholder="Enter Product Name"
-              /> */}
-              <InputField name="name" placeholder="Enter Product Name" />
-              {error && !name && <span>Enter Product Name *</span>}
+              />
+              {error && !name && <span>Enter Product Name *</span>} */}
             </div>
             <div>
+            <Input name="price" type="text" placeholder="Enter Product price" />
               {/* <input
                 type="text"
+                pattern="[0,9]"
+                required
                 value={data?.price}
                 onChange={(e) =>
                   setData({
@@ -101,12 +105,12 @@ const AddProduct = () => {
                   })
                 }
                 placeholder="Enter Product Price"
-              /> */}
-              <InputField name="price" placeholder="Enter Product price" />
-              {error && !price && <span>Enter Product Price *</span>}
+              />
+              {error && !price && <span>Enter Product Price *</span>} */}
             </div>
             <div>
-              <input
+            <Input name="category" type="text" placeholder="Enter Product Category" />
+              {/* <input
                 type="text"
                 value={data?.category}
                 onChange={(e) =>
@@ -117,12 +121,14 @@ const AddProduct = () => {
                 }
                 placeholder="Enter Product Category"
               />
-              {error && !category && <span>Enter Product Category *</span>}
+              {error && !category && <span>Enter Product Category *</span>} */}
             </div>
             <div>
-              <input
+            <Input name="brand" type="text" placeholder="Enter Product Brand" />
+              {/* <input
                 type="text"
                 value={data?.brand}
+                pattern="[a-z][A-Z][0-9]"
                 onChange={(e) =>
                   setData({
                     ...data,
@@ -131,9 +137,9 @@ const AddProduct = () => {
                 }
                 placeholder="Enter Prduct brand"
               />
-              {error && !brand && <span>Enter Product Brand *</span>}
+              {error && !brand && <span>Enter Product Brand *</span>} */}
             </div>
-            <button onClick={collectFormData} className="loginBtn">
+            <button  className="loginBtn">
               Add Product
             </button>
           </form>
