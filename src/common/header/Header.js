@@ -6,7 +6,6 @@ const Header = () => {
   let auth = localStorage.getItem("user")
   auth= JSON.parse(auth)
   const navigate = useNavigate()
-  console.log(auth)
   const logOut = () =>{
     localStorage.clear()
     // navigate("/signUp")
