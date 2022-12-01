@@ -11,7 +11,6 @@ const Dashboard = () => {
     let products = await fetch("http://localhost:5000")
     products = await products.json()
     setProductList(products)
-    console.log(products)
   }
 
   const deleteProduct = async (id) => {
