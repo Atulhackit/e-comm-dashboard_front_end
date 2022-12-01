@@ -33,7 +33,7 @@ const AddProduct = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(false);
   let userId = JSON.parse(localStorage.getItem("user"))?._id;
-
+  console.log("make changes")
   const collectFormData = async (e) => {
     e.preventDefault();
     const formData= new FormData(e.currentTarget)
