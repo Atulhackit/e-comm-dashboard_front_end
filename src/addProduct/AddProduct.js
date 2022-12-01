@@ -38,7 +38,7 @@ const AddProduct = () => {
     e.preventDefault();
     const formData= new FormData(e.currentTarget)
     const formValues = Object.fromEntries(formData.entries())
-    console.log("formValues")
+    // console.log("formValues")
 
     if (!formValues?.name || !formValues?.price || !formValues?.category || !formValues?.brand) {
       setError(true);
