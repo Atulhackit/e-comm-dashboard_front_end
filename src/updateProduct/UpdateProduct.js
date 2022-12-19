@@ -18,7 +18,7 @@ const UpdateProduct = () => {
   },[])
 
   const getProductDetails = async()=>{
-    let result = await fetch(`http://localhost:5000/product/${productId}`)
+    let result = await fetch(`https://enchanting-jade-toga.cyclic.app/product/${productId}`)
     result = await result.json()
     // console.log(result)
 
@@ -30,7 +30,7 @@ const UpdateProduct = () => {
 
   const updateFormData =async (e)=>{
     e.preventDefault()
-    let result = await fetch(`http://localhost:5000/product/${productId}`,{
+    let result = await fetch(`https://enchanting-jade-toga.cyclic.app/product/${productId}`,{
       method:"Put",
       body:JSON.stringify({name,price,category,brand }),
       headers:{

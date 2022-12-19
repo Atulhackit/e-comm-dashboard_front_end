@@ -46,7 +46,7 @@ const AddProduct = () => {
 
       return false; 
     }
-    let result = await fetch("http://localhost:5000/addProduct", {
+    let result = await fetch("https://enchanting-jade-toga.cyclic.app/addProduct", {
       method: "post",
       body: JSON.stringify(formValues),
       headers: {
