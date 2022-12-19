@@ -33,12 +33,12 @@ const AddProduct = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(false);
   let userId = JSON.parse(localStorage.getItem("user"))?._id;
-
+  console.log("make changes")
   const collectFormData = async (e) => {
     e.preventDefault();
     const formData= new FormData(e.currentTarget)
     const formValues = Object.fromEntries(formData.entries())
-    console.log("formValues")
+    console.log("formValuess")
 
     if (!formValues?.name || !formValues?.price || !formValues?.category || !formValues?.brand) {
       setError(true);
@@ -46,7 +46,7 @@ const AddProduct = () => {
 
       return false; 
     }
-    let result = await fetch("http://localhost:5000/addProduct", {
+    let result = await fetch("https://enchanting-jade-toga.cyclic.app/addProduct", {
       method: "post",
       body: JSON.stringify(formValues),
       headers: {

@@ -8,14 +8,15 @@ const Dashboard = () => {
   const [productList, setProductList] = useState([])
   const [productId,setProductId] = useState('')
   const ProductsApi = async () => {
-    let products = await fetch("http://localhost:5000")
+    let products = await fetch("https://enchanting-jade-toga.cyclic.app/")
     products = await products.json()
     setProductList(products)
   }
 
   const deleteProduct = async (id) => {
     // console.log(id)
-    const result = await fetch(`http://localhost:5000/deleteProduct/${id}`,
+    console.log("another file changes")
+    const result = await fetch(`https://enchanting-jade-toga.cyclic.app/deleteProduct/${id}`,
       {
         method: "delete"
       })
@@ -31,7 +32,7 @@ const Dashboard = () => {
     const key = e.target.value
     console.log(key)
     if(key){
-      let result = await fetch(`http://localhost:5000/search/${key}`)
+      let result = await fetch(`https://enchanting-jade-toga.cyclic.app/search/${key}`)
       result = await result.json()
       if(result){
         setProductList(result)
