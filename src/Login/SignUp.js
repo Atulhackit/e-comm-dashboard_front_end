@@ -11,7 +11,7 @@ const SignUp = () => {
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
   const collectFormData = async () => {
-    let result = await fetch("http://localhost:5000/register", {
+    let result = await fetch("https://enchanting-jade-toga.cyclic.app/register", {
       method: "post",
       body: JSON.stringify({ name, email, password }),
       headers: {
