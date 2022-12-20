@@ -11,7 +11,7 @@ const LogIn = () => {
   const [password, setPassword] = useState("")
   const navigate =useNavigate()
   const collectFormData=async()=>{
-    let result = await fetch("http://localhost:5000/login",{
+    let result = await fetch("https://enchanting-jade-toga.cyclic.app/login",{
       method:"post",
       body:JSON.stringify({email,password}),
       headers:{
