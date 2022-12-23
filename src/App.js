@@ -22,7 +22,6 @@ function App() {
     <Fragment>
       <Routes>
         <Route element = {<PrivateComponent/>}>
-        <Route path='/' element={<Dashboard />} />
         <Route path='/addPorduct' element={<AddProduct />} />
         <Route path='/updateProduct/:id' element={<UpdateProduct />} />
         <Route path='/about' element={<About />} />
@@ -30,6 +29,7 @@ function App() {
         <Route path='/form' element={<DummyForm/>} />
         </Route>
 
+        <Route path='/' element={<Dashboard />} />
         <Route path='/signUp' element={<SignUp />} />
         <Route path='/login' element={<LogIn />} />
       </Routes>
