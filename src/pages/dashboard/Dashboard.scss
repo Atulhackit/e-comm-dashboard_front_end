@@ -1,62 +1,75 @@
+$secondary-color: #00ff55;
+$primary-color: #7a7a71;
 
-$secondary-color:#00ff55;
-$primary-color:#7a7a71;
+.dashboardContainer {
+  width: 100%;
+  height: 100%;
+  display: grid;
+    grid-template-rows: 65px calc(100vh - 105px) 40px;
+  overflow: hidden;
+  .mainContainer {
+    background-color: #f7f3fd;
+    margin: 1.5em;
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5em;
+    padding: 1em;
+    height: calc(100% - 90px);
+    width: calc(100% - 90px);
 
-.dashboardContainer{
-
-    .mainContainer {
+    .tableHeader{
         display: flex;
-        align-items: center;
-        flex-direction: column;
-        height: 79.5vh;
-        margin: 2em 0;
-        gap: 1.5em;
-        .SearchInput{
-            padding: 1em;
-            font-size: .8em;
-            width: 40%;
-            font-weight: 500;
-            color: $primary-color;
-            border: 1px solid $secondary-color;
-            border-radius: 1em;
-
-            &:focus{
-                outline: none;
-                
-            }
+        justify-content: space-between;
+        width: 100%;
+        height: 10%;
+        padding:0 1em;
+        .SearchInput {
+          padding:.5em 1em;
+          font-size: 0.8em;
+          width: 40%;
+          font-weight: 500;
+          color: $primary-color;
+          border: 1px solid $secondary-color;
+          border-radius: 1em;
+    
+          &:focus {
+            outline: none;
+          }
         }
-        .heading{
-            color: grey;
-            p{
-                font-size: 1.4  em;
-                font-weight: 700;
+        >p {
+          color: grey;
+            font-size: 1.4 em;
+            font-weight: 700;
+            padding-top: 1em;
 
-            }
-        }
-        .ProductTable{
-            width: 70%;
-            table-layout: fixed;
-            // display: flex;
-            // flex-direction: column;
-
-            .tableHead ,.tableBody{
-                list-style: none;
-                display: flex;
-
-                .item{
-                    border: 1px solid $primary-color;
-                    color: grey;
-                    flex: 4;
-                    font-size: 1em;
-                    padding:.5em 1em;
-
-                    &:first-child{
-                        flex: 1;
-                    }
-                    
-                }
-
-            }
         }
     }
+    .ProductTable {
+      width: 100%;
+      height: 80%;
+      table-layout: fixed;
+      // display: flex;
+      // flex-direction: column;
+
+      .tableHead,
+      .tableBody {
+        list-style: none;
+        display: flex;
+
+        .item {
+          border: 1px solid $primary-color;
+          color: grey;
+          flex: 4;
+          font-size: 1em;
+          padding: 0.5em 1em;
+
+          &:first-child {
+            flex: 1;
+          }
+        }
+      }
+    }
+  }
 }

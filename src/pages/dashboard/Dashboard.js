@@ -52,37 +52,37 @@ const Dashboard = () => {
     ProductsApi();
   }, [productId]);
   return (
-    <div className="dashboardContainer">
+    <section className="dashboardContainer">
       <Header />
       <section className="mainContainer">
-        <div className="heading">
+        <header className="tableHeader">
           <p> Product List </p>
-        </div>
         <input
           type="search"
           placeholder="Search Product"
           className="SearchInput"
           onChange={(e) => SearchHandle(e)}
         />
-        <div className=" ProductTable">
-          <ul className="tableHead">
-            <li className="item">S. No</li>
-            <li className="item">Product Name</li>
-            <li className="item">Category</li>
-            <li className="item">Brand</li>
-            <li className="item">Price</li>
-            <li className="item">Operation</li>
-          </ul>
+        </header>
+        <table className=" ProductTable">
+          <tr className="tableHead">
+            <th className="item">S. No</th>
+            <th className="item">Product Name</th>
+            <th className="item">Category</th>
+            <th className="item">Brand</th>
+            <th className="item">Price</th>
+            <th className="item">Operation</th>
+          </tr>
           {productList.length > 0 ? (
             productList.map((row, i) => {
               return (
-                <ul className="tableBody" key={i}>
-                  <li className="item">{i}.</li>
-                  <li className="item">{row?.name}</li>
-                  <li className="item">{row?.category}</li>
-                  <li className="item">{row?.brand}</li>
-                  <li className="item">${row?.price}</li>
-                  <li className="item">
+                <tr className="tableBody" key={i}>
+                  <td className="item">{i}.</td>
+                  <td className="item">{row?.name}</td>
+                  <td className="item">{row?.category}</td>
+                  <td className="item">{row?.brand}</td>
+                  <td className="item">${row?.price}</td>
+                  <td className="item">
                     <button
                       onClick={() => (userId ? deleteProduct(row?._id) : null)}
                     >
@@ -91,17 +91,17 @@ const Dashboard = () => {
                     <Link to={userId ? `/updateProduct/${row?._id}` : "/ "}>
                       update
                     </Link>
-                  </li>
-                </ul>
+                  </td>
+                </tr>
               );
             })
           ) : (
             <h3>No Product Found </h3>
           )}
-        </div>
+        </table>
       </section>
       <Footer />
-    </div>
+    </section>
   );
 };
 

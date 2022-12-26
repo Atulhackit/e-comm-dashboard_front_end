@@ -3,11 +3,13 @@ $secondary-color:#1a1a00;
 $font-color:#fff;
 
 .headerWrapper{
-    height: 60px;
+    padding: .3em;
     width: 100%;
     background-color: $primary-color;
-    position: fixed;
-    top: 0;
+    // height: 65px;
+    box-shadow: 0px 4px 5px 3px rgb(24 61 86 / 9%);
+    -webkit-box-shadow: 0px 4px 5px 3px rgb(24 61 86 / 9%);
+  
     .navItems{
         display: flex;
         justify-content: flex-end;
