@@ -65,6 +65,7 @@ const Dashboard = () => {
         />
         </header>
         <table className=" ProductTable">
+          <tbody>
           <tr className="tableHead">
             <th className="item">S. No</th>
             <th className="item">Product Name</th>
@@ -98,6 +99,7 @@ const Dashboard = () => {
           ) : (
             <h3>No Product Found </h3>
           )}
+          </tbody>
         </table>
       </section>
       <Footer />
